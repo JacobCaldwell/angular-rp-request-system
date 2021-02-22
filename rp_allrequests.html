@@ -1,0 +1,87 @@
+<div class="container-fluid px-5">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item"> <a class="nav-link" href="#admin">Current Requests</a> </li>
+                        <li class="nav-item"> <a class="nav-link active" href="#allRequests">All Requests</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#reports">Reports</a> </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Search for Records</label>
+                            <div class="row">
+                                <div class="col-md-6 pr-0">
+                                    <input id="testing" class="form-control" type="text" ng-model="search[columns]" placeholder="Search" />
+                                </div>
+                                <div class="col-md-3 pl-0">
+                                    <select class="form-control" ng-model="columns" ng-options="key as value for (key , value) in searchOptions">
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 pb-5">
+                            <label>Cost Per Hour ($)</label>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-5 col-md-5">
+                                    <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input class="form-control" type="number" ng-model="pricePerHour" format="currency" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Date Requested</th>
+                                    <th>Purpose</th>
+                                    <th>Project Number</th>
+                                    <th>Cost Center</th>
+                                    <th>Print Time</th>
+                                    <th>Start Time</th>
+                                    <th>Cost</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="request-queue">
+                                <tr ng-repeat="item in queue | filter : search " ng-cloak>
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{item.User_x0020_Name}}</td>
+                                    <td>{{item.Date_x0020_Requested | date:'MM-dd-yyyy'}}</td>
+                                    <td>{{item.Purpose}}</td>
+                                    <td>{{item.Project_x0020_Number}}</td>
+                                    <td>{{item.Cost_x0020_Center}}</td>
+                                    <td>{{item.Print_x0020_Time_x0020_Hours}}:{{item.Print_x0020_Time_x0020_Minutes}}</td>
+                                    <td>{{item.Start_x0020_Time | date:'MM-dd-yyyy'}}</td>
+                                    <td>{{item.Print_x0020_Time_x0020_Hours * pricePerHour + item.Print_x0020_Time_x0020_Minutes/60 * pricePerHour | currency : symbol : fractionSize }}</td>
+                                    <td>
+                                        <h6 class="{{(item.Print_x0020_Status | statusFilter)[1]}}"><i class="fa fa-fw icon-circle"></i>{{(item.Print_x0020_Status | statusFilter)[0]}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

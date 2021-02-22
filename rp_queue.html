@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-uppercase"> Current Prototyping Request Queue</div>
+                <div class="card-body">
+                    <table class="table" style="">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name - Project Number - Date</th>
+                                <th class="w-25 text-left">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="request-queue">
+                            <tr ng-repeat="item in queue | limitTo:15" ng-cloak>
+                                <td>{{$index + 1 }}</td>
+                                <td>{{item.User_x0020_Name}} - {{item.Project_x0020_Number}} - {{item.Date_x0020_Requested | date:'MM-dd-yyyy'}}</td>
+                                <td>
+                                    <h6 class="{{(item.Print_x0020_Status | statusFilter)[1]}}"><i class="fa fa-fw icon-circle"></i>{{(item.Print_x0020_Status | statusFilter)[0]}}</h6>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

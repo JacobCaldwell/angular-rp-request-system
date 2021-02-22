@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#admin">Current Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#allRequests">All Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reports">Reports</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+
+                <div class="card-body" id="admin-current-requests">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Request</th>
+                                <th>Status</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody id="current-requests-table">
+                            <tr ng-repeat="items in queue">
+                                <td class="w-50">{{items.User_x0020_Name}} - {{items.Project_x0020_Number}} - {{items.Date_x0020_Requested | date:'MM-dd-yyyy'}}</td>
+                                <td class="w-25">
+                                    <h6 class="{{(items.Print_x0020_Status | statusFilter)[1]}}"><i class="fa fa-fw icon-circle"></i>{{(items.Print_x0020_Status | statusFilter)[0]}}</h6>
+                                </td>
+                                <td class="w-25">
+                                    <a role="button" class="btn btn-sm btn-success" href="#admin/{{items.ID}}">Edit</a>
+                                    <a role="button" class="btn btn-sm btn-danger" href="#remove/{{items.ID}}">Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

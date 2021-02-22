@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-uppercase"> Past Prototyping Request</div>
+                <div class="card-body">
+                    <table class="table" style="">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name - Project Number - Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="request-history">
+                            <tr ng-repeat='item in usersData.history'>
+                                <td>{{$index + 1}}</td>
+                                <td>{{item.User_x0020_Name}} - {{item.Project_x0020_Number}} - {{item.Date_x0020_Requested | date:'MM-dd-yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

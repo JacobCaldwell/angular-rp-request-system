@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-uppercase">Rapid Prototyping Request Form</div>
+                <div class="card-body" id="current-request-yes">
+                    <form id="new-request-form" class="" method="post" action="" style="" role="form">
+
+                        <div class="form-group ">
+                            <label class="form-control-label">Email</label>
+                            <input id="form-email" type="email" class="form-control" placeholder="Enter Email" value="{{ currentUserEmail }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Name</label>
+                            <input id="form-name" type="text" class="form-control" placeholder="Enter Name" value="{{ currentUserName }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Date</label>
+                            <input id="form-date" type="date" class="form-control" placeholder="Enter Date" value="{{date | date:'yyyy-MM-dd'}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Project Number</label>
+                            <input id="form-project-number" type="text" class="form-control" placeholder="Enter Project Number">
+                        </div>
+
+                        <div class="form-group"><label class="form-control-label">Cost Center</label>
+                            <input id="form-cost-center" type="number" class="form-control" placeholder="Enter Cost Center">
+                        </div>
+
+                        <div class="form-group"><label class="form-control-label">Purpose</label>
+                            <select id="form-purpose" class="form-control">
+            <option selected="true" disabled="disabled">- Select -</option>
+            <option value="New Prodcut Development">New Prodcut Development</option>
+            <option value="R&amp;D (Existing Product)">R&amp;D (Existing Product)</option>
+            <option value="Marketing (VOC)">Marketing (VOC)</option>
+            <option value="Other">Other</option>
+        </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">If Other Purpose, Please Explain</label>
+                            <textarea class="form-control" id="form-explanation" rows="3"></textarea>
+                        </div>
+
+                        <div class="row mr-0 ml-0 mb-3">
+                            <div class="form-group col-9" id="form-sample-name">
+                                <label class="form-control-label">Name of Sample</label>
+                                <input type="text" class="form-control form-sample-name" placeholder="Enter the sample name">
+                            </div>
+                            <div class="form-group col-3 pl-2" id="form-sample-quantity">
+                                <label class="form-control-label">Quantity</label>
+                                <input type="number" class="form-control form-sample-quantity" value="0" placeholder="Enter a quantity">
+                            </div>
+                            <div class="form-group w-100">
+                                <button type="button" class="btn btn-sm btn-primary float-right" id="add-new-row">+</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Special Requests</label>
+                            <textarea id="form-requests" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">File input</label>
+                            <input id="form-file-input" type="file" accept=".stl,.zip" multiple class="form-control-file">
+                            <p>If possible, please upload a .zip containing your files</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submit-request" class="btn active btn-success">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

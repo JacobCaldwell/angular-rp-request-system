@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item"> <a class="nav-link " href="#admin">Current Requests</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#allRequests">All Requests</a> </li>
+                        <li class="nav-item"> <a class="nav-link active" href="#reports">Reports</a> </li>
+                    </ul>
+                </div>
+                <div class="card-body" id="admin-current-requests">
+
+
+                    <div class="col-md-6 pb-5">
+                        <label>Cost Per Hour ($)</label>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input class="form-control" type="number" ng-model="pricePerHour" format="currency" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row py-5">
+                        <div class="col-md-5">
+                            <table class="table" style="">
+                                <thead>
+                                    <tr>
+                                        <th>Cost Center</th>
+                                        <th>Hours Run</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="request-queue">
+                                    <tr ng-repeat="item in reportDataCC" ng-cloak>
+                                        <td>{{item.cc}}</td>
+                                        <td>{{item.tt}}</td>
+                                        <td>{{item.tt * pricePerHour | currency : symbol : fractionSize}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-7">
+                            <canvas id="pie" class="chart chart-pie" chart-data="report1t" chart-labels="report1cc" chart-options="options"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="row py-5">
+                        <div class="col-md-12">
+                            <table class="table" style="">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Cost Center</th>
+                                        <th>Hours Run</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="request-queue">
+                                    <tr ng-repeat="item in reportDataPersons" ng-cloak>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.cc}}</td>
+                                        <td>{{item.tt}}</td>
+                                        <td>{{item.tt * pricePerHour | currency : symbol : fractionSize}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="offset-md-1 col-md-10">
+                            <canvas id="bar" class="chart chart-bar" chart-data="report2t" chart-labels="report2name" chart-options="options2"></canvas>
+                        </div>
+                    </div>
+
+
+                    <div class="row py-5">
+                        <div class="col-md-12">
+                            <table class="table table-sm" ng-repeat="index in reportDataCC" style="">
+                                <thead>
+                                    <tr>
+                                        <th class="w-50">Cost Center - {{index.cc}}</th>
+                                        <th class="w-25">Hours Run</th>
+                                        <th class="w-25">Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="request-queue">
+                                    <tr ng-repeat="item in reportDataCC[index.cc].p" ng-cloak>
+
+
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.time}}</td>
+                                        <td>{{item.time * pricePerHour | currency : symbol : fractionSize}}</td>
+                                    </tr>
+
+
+                                </tbody>
+                                <tfoot class="font-weight-bold text-primary">
+                                                                        <tr>
+                                        <td></td>
+                                        <td>{{index.tt}}</td>
+                                        <td>{{index.tt * pricePerHour | currency : symbol : fractionSize}}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#admin">Current Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#allRequests">All Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reports">Reports</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-body " id="admin-edit">
+                    <!--                    <div class="" id="admin-name-holder"></div>-->
+
+                    <a class="btn btn-primary my-2 mb-4" href="#admin">Back</a>
+                    <!--
+                    <h4 class="card-title " id="admin-request-header">Jacob</h4>
+                    <h6 class="card-subtitle text-muted my-3">Request ID: <span id="request-id"></span></h6>
+                    <h6 class="card-subtitle text-muted" id="admin-purpose">New Product Development</h6>
+                    <a class="btn my-4 btn-sm" id="admin-current-status" href="#"></a>
+-->
+
+                    <div class="row">
+
+                        <table class="table table-sm m-2">
+                            <tbody>
+                                <tr>
+                                    <th class="w-25">Name</th>
+                                    <td ng-cloak>{{editMenuItems.User_x0020_Name}}</td>
+
+                                </tr>
+                                <tr>
+                                    <th class="w-25">Email</th>
+                                    <td ng-cloak><a href="mailto:{{editMenuItems.Title}}">{{editMenuItems.Title}}</a></td>
+
+                                </tr>
+                                <tr>
+                                    <th class="w-25">Date Requested</th>
+                                    <td ng-cloak>{{editMenuItems.Date_x0020_Requested | date:'MM-dd-yyyy'}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="w-25">Project Number</th>
+                                    <td ng-cloak>{{editMenuItems.Project_x0020_Number}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!--<input class="form-control w-100" type="text" ng-model="samples[0].name" ng-change="repop()" min="0" id="example-number-input">-->
+
+                    <div class="row">
+                        <table class="table table-sm m-3">
+                            <thead>
+                                <tr>
+                                    <th class="w-50">Sample Name</th>
+                                    <th class="w-25 text-center">Quantity</th>
+                                    <th class="w-25 ">Print Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-sample-table" ng-repeat="items in editMenuItems.JSONitem">
+                                <tr>
+                                    <td class="w-50">{{items.name}}</td>
+                                    <td class="w-25 text-center">{{items.quantity}}</td>
+                                    <td class="w-25">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <input class="form-control w-100" type="number" ng-model="items.hours" ng-change="repop({{$index}})" min="0" id="example-number-input">
+                                            </div>:
+                                            <div class="col-md-5 ">
+                                                <input class="form-control w-100" type="number" ng-model="items.minutes" ng-change="repop({{$index}})" min="0" max="59" id="example-number-input">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="w-50">Totals</th>
+                                    <th class="w-25 text-center">{{editMenuItems.totalQuant}}</th>
+                                    <th class="w-25 text-center" ng-cloak>{{editMenuItems.totalTime | minutesToDHM}}</th>
+                                </tr>
+                                <tr>
+                                    <th class="w-50"></th>
+                                    <th class="w-25 text-center"></th>
+                                    <th class="w-25 text-center text-primary" ng-cloak>{{editMenuItems.totalTime / 60 * pricePerHour | currency : symbol : fractionSize}}</th>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group"> <label>Printing Start Date</label>
+                                <input class="form-control" type="datetime-local" value="{{editMenuItems.Start_x0020_Time | date: 'yyyy-MM-ddThh:mm'}}" id="example-datetime-local-input">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <h5 class="my-4">Explanation:</h5>
+                    <p id="admin-explanation">{{editMenuItems.Request_x0020_Explanation}}</p>
+                    <h5 class="my-4">Special Requests:</h5>
+                    <p id="admin-special">{{editMenuItems.Special_x0020_Requests}}</p>
+                    <a class="btn my-2 btn-block btn-success" id="admin-download" href="#"><i class="fa fa-fw fa-folder-open"></i>Download Sample Files</a>
+                    <form class="" method="post" action="">
+                        <div class="form-group">
+                            <label class="form-control-label">Print Status</label>
+                            <select class="form-control" id="admin-status">
+                                <option value="0">Waiting</option>
+                                <option value="1">Printing</option>
+                                <option value="2">Cleaning</option>
+                                <option value="3">Finished</option>
+                            </select>
+                        </div>
+                    </form>
+                    <a class="btn my-4 btn-primary" id="admin-submit" href="#">Submit Changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
